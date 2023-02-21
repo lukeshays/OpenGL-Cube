@@ -1,0 +1,39 @@
+-------------------------------------------------------------------------------
+| Setup Guide for WSL Ubuntu -  5.10.16.3-microsoft-standard-WSL2             |
+-------------------------------------------------------------------------------
+
+Dependencies:
+    sudo apt-get update
+    sudo apt-get install cmake pkg-config
+    sudo apt-get install mesa-utils libglu1-mesa-dev freeglut3-dev mesa-common-dev
+    sudo apt-get install libglew-dev libglfw3-dev libglm-dev
+    sudo apt-get install libao-dev libmpg123-dev
+
+GLFW Library:
+    cd /usr/local/lib/
+    sudo git clone https://github.com/glfw/glfw.git
+    sudo apt install libxinerama-dev
+    sudo apt install libxcursor-dev
+    sudo apt install libxi-dev
+    cd glfw/
+    sudo cmake .
+    sudo make
+    sudo make install
+
+OpenGL Functions from GLAD Web Service:
+    1. Head on to the GLAD web service.
+    2. Set the language to C++ and choose the specification as OpenGL.
+    3. In the API section, select gl version of at least 3.3, make sure the profile is set to Core, and that the Generate a loader option is ticked.
+    4. Ignore the extensions and click Generate to produce the resulting library files.
+    5. GLAD, by now, should have provided you a zip file: glad.zip containing two folders(include and src).
+    6. Copy the folders inside include (glad and KHR) into your include(s) directory: cp -R include/* /usr/include/
+    7. Now copy the file glad.c inside the src folder to your current working directory.
+
+GLM (OpenGL Mathematics)
+    1. Download header files from https://github.com/g-truc/glm/releases/tag/0.9.9.8 and add to /usr/include/
+
+OpenGL - 3D Graphics Specification Implemented by GPU makers
+GLEW - OpenGL Extension Wrangler - Loads binary functions from GPUs into C++ code
+GLAD - GL Loader-Generator - Similar to GLEW
+GLFW - Graphics Library Framework - Helps manage things such as windows, basic IO, events, etc.
+GLUT - Same as GLFW but older?
